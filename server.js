@@ -74,6 +74,9 @@ app.use("/api/v1/categories", categories);
 app.use("/api/v1/places", places);
 app.use("/api/v1/testinomial", testinomial);
 app.use("/api/v1/reviews", reviews);
+app.use("/", (req, res) =>
+  res.json({ msg: "server started succesfully", date: Date.now() })
+);
 
 app.use(errorHandler);
 
