@@ -40,6 +40,7 @@ const cities = require("./routes/cities");
 const categories = require("./routes/categories");
 const places = require("./routes/places");
 const testinomial = require("./routes/testinomial");
+const reviews = require("./routes/review");
 
 // Sanitize data
 app.use(mongoSanitize());
@@ -72,6 +73,7 @@ app.use("/api/v1/cities", cities);
 app.use("/api/v1/categories", categories);
 app.use("/api/v1/places", places);
 app.use("/api/v1/testinomial", testinomial);
+app.use("/api/v1/reviews", reviews);
 
 app.use(errorHandler);
 

@@ -55,7 +55,7 @@ exports.getPlacesFilter = asyncHandler(async (req, res, next) => {
 // @required  recive placeId in request params
 exports.getPlace = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
-  const place = await Place.findById(id);
+  const place = await Place.findById(id).populate("reviews");
   if (!place) {
     return next(new ErrorResponse(`place not found with id of ${id}`, 404));
   }
