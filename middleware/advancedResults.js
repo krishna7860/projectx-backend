@@ -76,6 +76,7 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   res.advancedResults = {
     success: true,
     count: results.length,
+    totalPages: Math.ceil(total / limit),
     pagination,
     data: results,
   };

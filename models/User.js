@@ -23,6 +23,12 @@ const UserSchema = new mongoose.Schema({
       ref: "Category",
     },
   ],
+  favouraits: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Place",
+    },
+  ],
   role: {
     type: String,
     enum: ["user", "publisher"],

@@ -61,7 +61,7 @@ const PlaceSchema = new mongoose.Schema({
   ],
   stateId: {
     type: mongoose.Schema.ObjectId,
-    // ref: "City",
+    ref: "State",
   },
   catagoryId: {
     type: mongoose.Schema.ObjectId,

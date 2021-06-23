@@ -39,6 +39,7 @@ const states = require("./routes/states");
 const cities = require("./routes/cities");
 const categories = require("./routes/categories");
 const places = require("./routes/places");
+const testinomial = require("./routes/testinomial");
 
 // Sanitize data
 app.use(mongoSanitize());
@@ -70,6 +71,7 @@ app.use("/api/v1/states", states);
 app.use("/api/v1/cities", cities);
 app.use("/api/v1/categories", categories);
 app.use("/api/v1/places", places);
+app.use("/api/v1/testinomial", testinomial);
 
 app.use(errorHandler);
 
