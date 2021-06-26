@@ -3,6 +3,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 const sendEmail = require("../utils/sendEmail");
 const User = require("../models/User");
+const CryptoJS = require("crypto-js");
 
 // @desc      Register user
 // @route     POST /api/v1/auth/register
@@ -29,9 +30,13 @@ exports.register = asyncHandler(async (req, res, next) => {
 // @access    Public
 exports.login = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
+  const bytes = CryptoJS.AES.decrypt(password, process.env.REACT_APP_SALT);
+  var hashedPassword = JSON.parse(bytes.toString(CryptoJS.enc.Utf8)).toString();
+
+  console.log(hashedPassword);
 
   // Validate emil & password
-  if (!email || !password) {
+  if (!email || !hashedPassword) {
     return next(new ErrorResponse("Please provide an email and password", 400));
   }
 
@@ -43,7 +48,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   }
 
   // Check if password matches
-  const isMatch = await user.matchPassword(password);
+  const isMatch = await user.matchPassword(hashedPassword);
 
   if (!isMatch) {
     return next(new ErrorResponse("Invalid credentials", 401));

@@ -22,6 +22,12 @@ const ReviewSchema = new mongoose.Schema({
     ref: "Place",
     required: true,
   },
+  imgUrl: {
+    type: String,
+  },
+  username: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
