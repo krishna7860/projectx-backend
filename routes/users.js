@@ -21,8 +21,9 @@ router.use(authorize("user", "admin"));
 
 router.route("/").get(advancedResults(User), getUsers).post(createUser);
 
+router.route("/favourite").post(addToFavourait);
+
 router.route("/:id").get(getUser).put(updateUser).delete(deleteUser);
 
-router.route("/favourait").post(addToFavourait);
 
 module.exports = router;
