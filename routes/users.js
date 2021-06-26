@@ -25,4 +25,5 @@ router.route("/favourite").post(addToFavourait);
 
 router.route("/:id").get(getUser).put(updateUser).delete(deleteUser);
 
+
 module.exports = router;
